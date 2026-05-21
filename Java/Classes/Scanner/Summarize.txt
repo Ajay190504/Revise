@@ -1,0 +1,216 @@
+
+SCANNER CLASS SUMMARY NOTES
+===========================
+
+
+Scanner Class
+-------------
+- Scanner class is used to take input from user.
+- Package:
+import java.util.Scanner;
+
+- Object creation:
+Scanner sc = new Scanner(System.in);
+
+System.in means keyboard input.
+
+
+
+Scanner Methods
+---------------
+
+Method                      Used For
+---------------------------------------------------
+nextByte()                  byte input
+
+nextShort()                 short input
+
+nextInt()                   int input
+
+nextLong()                  long input
+
+nextFloat()                 float input
+
+nextDouble()                double input
+
+nextBoolean()               boolean input
+
+next()                      single word input
+
+nextLine()                  full line/string input
+
+next().charAt(0)            character input
+---------------------------------------------------
+
+
+
+Examples
+--------
+
+byte b = sc.nextByte();
+
+short s = sc.nextShort();
+
+int num = sc.nextInt();
+
+long l = sc.nextLong();
+
+float f = sc.nextFloat();
+
+double d = sc.nextDouble();
+
+boolean flag = sc.nextBoolean();
+
+String city = sc.next();
+
+String name = sc.nextLine();
+
+char ch = sc.next().charAt(0);
+
+
+
+Important Difference
+--------------------
+
+next()
+------
+- Reads only one word
+- Stops at space
+
+Example:
+Input:
+Ajay Waghmare
+
+Output:
+Ajay
+
+
+nextLine()
+----------
+- Reads complete line including spaces
+
+Example:
+Input:
+Ajay Waghmare
+
+Output:
+Ajay Waghmare
+
+
+
+Important Anomaly
+-----------------
+
+Problem:
+--------
+After numeric input methods like:
+- nextInt()
+- nextFloat()
+- nextDouble()
+- nextBoolean()
+
+the nextLine() method may skip input unexpectedly.
+
+
+Reason:
+-------
+Numeric methods leave newline character (\n)
+inside scanner buffer.
+
+
+
+Wrong Example
+-------------
+
+int id = sc.nextInt();
+
+String name = sc.nextLine();
+
+Problem:
+name input gets skipped.
+
+
+
+Solution
+--------
+
+Use:
+sc.nextLine();
+
+before taking actual string input.
+
+
+
+Correct Example
+---------------
+
+int id = sc.nextInt();
+
+sc.nextLine();
+
+String name = sc.nextLine();
+
+
+
+Character Input
+---------------
+
+Scanner class has no direct method for char input.
+
+Wrong:
+char ch = sc.nextChar();    // Not available
+
+
+Correct:
+char ch = sc.next().charAt(0);
+
+
+
+Closing Scanner
+---------------
+
+Use:
+sc.close();
+
+Reason:
+- Prevents resource leak
+- Recommended practice
+
+
+
+Interview Points
+----------------
+
+1. Scanner class belongs to java.util package.
+
+2. System.in is used for keyboard input.
+
+3. next() reads single word.
+
+4. nextLine() reads complete line.
+
+5. nextLine() anomaly occurs because newline remains in buffer.
+
+6. char input is taken using:
+   next().charAt(0)
+
+7. Scanner object should be closed using:
+   sc.close();
+
+
+
+Conclusion
+----------
+
+Scanner class is the most commonly used class
+for taking user input in Java.
+
+It supports input for:
+- primitive data types
+- String
+- character
+- boolean values
+
+Understanding next() vs nextLine()
+and the buffer anomaly is very important
+for interviews and coding practice.
