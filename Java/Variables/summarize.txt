@@ -1,0 +1,250 @@
+
+JAVA VARIABLE TYPES AND MEMBER ACCESS SUMMARY NOTES
+===================================================
+
+
+1. TYPES OF VARIABLES IN JAVA
+=============================
+
+A) Local Variable
+-----------------
+- Declared inside method, constructor, or block
+- Scope limited to that block only
+- Must be initialized before use
+
+Example:
+int number = 10;
+
+Examples used:
+- number
+- temp
+- marks
+
+
+B) Instance Variable
+--------------------
+- Declared inside class but outside methods
+- Separate copy created for every object
+- Accessed using object reference
+
+Example:
+int id;
+String name;
+
+Examples used:
+s1.id
+s2.name
+
+
+C) Static Variable
+------------------
+- Declared using static keyword
+- Shared among all objects
+- Memory allocated only once
+
+Example:
+static String collegeName = "ABC College";
+
+Access:
+Student.collegeName
+
+
+Important Difference
+--------------------
+Local Variable:
+- Exists inside method/block only
+
+Instance Variable:
+- Belongs to object
+
+Static Variable:
+- Belongs to class
+
+
+
+2. ACCESSING STATIC MEMBERS
+===========================
+
+Static Members:
+- Static variables
+- Static methods
+
+Example:
+static int number = 100;
+
+static void showMessage() {}
+
+
+
+Accessing Static Members in Static Method
+-----------------------------------------
+
+Way 1:
+Direct Access
+Non-recommended for large projects
+
+number;
+showMessage();
+
+
+Way 2:
+Using Class Name
+Recommended approach
+
+Demo.number;
+Demo.showMessage();
+
+
+Way 3:
+Using Object Reference
+Allowed but non-recommended
+
+Demo d = new Demo();
+
+d.number;
+d.showMessage();
+
+
+
+Accessing Static Members in Non-Static Method
+---------------------------------------------
+
+Way 1:
+Direct Access
+Allowed but less preferred
+
+number;
+showMessage();
+
+
+Way 2:
+Using Class Name
+Recommended approach
+
+Demo.number;
+Demo.showMessage();
+
+
+Way 3:
+Using Object Reference
+Allowed but non-recommended
+
+Demo d = new Demo();
+
+d.number;
+d.showMessage();
+
+
+
+Important Notes
+---------------
+Recommended:
+ClassName.variable
+ClassName.method();
+
+Reason:
+- Better readability
+- Follows industry standards
+- Clearly shows static member
+
+
+
+3. ACCESSING NON-STATIC MEMBERS
+===============================
+
+Non-static Members:
+- Instance variables
+- Non-static methods
+
+Example:
+int id = 101;
+
+void display() {}
+
+
+
+Accessing Non-Static Members in Static Method
+---------------------------------------------
+
+Direct access NOT possible
+
+Wrong:
+id;
+display();
+
+Reason:
+Static methods belong to class,
+but non-static members belong to object.
+
+
+Correct Way:
+Using object reference
+
+Student s = new Student();
+
+s.id;
+s.display();
+
+
+
+Accessing Non-Static Members in Non-Static Method
+-------------------------------------------------
+
+Way 1:
+Direct Access
+Recommended inside same class
+
+id;
+display();
+
+
+Way 2:
+Using this keyword
+Recommended for clarity
+
+this.id;
+this.display();
+
+
+Way 3:
+Using object reference
+Allowed but mostly non-recommended
+
+Student s = new Student();
+
+s.id;
+s.display();
+
+
+
+Important Difference
+--------------------
+
+Static Method:
+- Belongs to class
+- Can directly access only static members
+
+Non-Static Method:
+- Belongs to object
+- Can access both static and non-static members
+
+
+
+INTERVIEW POINTS
+================
+
+1. Static members belong to class.
+
+2. Non-static members belong to object.
+
+3. Static methods cannot directly access non-static members.
+
+4. Non-static methods can access static members directly.
+
+5. this keyword refers to current object.
+
+6. Recommended way for static members:
+ClassName.member
+
+7. Recommended way for own non-static members:
+direct access or this keyword.
